@@ -1,0 +1,2 @@
+${H}"Atmel AVR Dragon ISP Programmer rules"
+"SUBSYSTEM==\\\"usb\\\", ATTRS{idVendor}==\\\"03eb\\\", ATTRS{idProduct}==\\\"2107\\\", GROUP=\\\"users\\\", MODE=\\\"0666\\\""

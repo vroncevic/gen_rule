@@ -1,0 +1,2 @@
+${H}"Atmel AVR Generic (SiLabs CP2102) 3.3v/5v USB VComm adapter Programmer rules"
+"SUBSYSTEMS==\\\"usb\\\", ATTRS{idVendor}==\\\"10c4\\\", ATTRS{idProduct}==\\\"ea60\\\", GROUP=\\\"users\\\", MODE=\\\"0666\\\""

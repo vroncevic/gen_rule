@@ -1,0 +1,4 @@
+${H}"Texas Instruments MSP430UIF"
+"SUBSYSTEMS==\\\"usb\\\", ATTRS{idVendor}==\\\"2047\\\", ATTRS{idProduct}==\\\"0010\\\", GROUP=\\\"users\\\", MODE=\\\"0666\\\""
+"SUBSYSTEMS==\\\"usb\\\", ATTRS{idVendor}==\\\"2047\\\", ATTRS{idProduct}==\\\"0013\\\", GROUP=\\\"users\\\", MODE=\\\"0666\\\""
+"SUBSYSTEMS==\\\"usb\\\", ATTRS{idVendor}==\\\"2047\\\", ATTRS{idProduct}==\\\"0203\\\", GROUP=\\\"users\\\", MODE=\\\"0666\\\""

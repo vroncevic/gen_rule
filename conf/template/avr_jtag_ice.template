@@ -1,0 +1,2 @@
+${H}"Atmel AVR JTAG ICE MKII Programmer rules"
+"SUBSYSTEM==\\\"usb\\\", ATTRS{idVendor}==\\\"03eb\\\", ATTRS{idProduct}==\\\"2103\\\", GROUP=\\\"users\\\", MODE=\\\"0666\\\""
