@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # @brief   Removing UDEV rule file from system
-# @version ver.1.0
+# @version ver.1.0.0
 # @date    Wed Nov 30 15:49:54 CET 2016
 # @company None, free sowtware to use 2016
 # @author  Vladimir Roncevic <vladimir.roncevic@frobas.com>
