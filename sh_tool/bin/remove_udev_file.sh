@@ -7,11 +7,11 @@
 # @author  Vladimir Roncevic <vladimir.roncevic@frobas.com>
 #
 
-declare -A REMOVE_UDEV_RULE_USAGE=(
-    [USAGE_TOOL]="__remove_udev_file"
-    [USAGE_ARG1]="[UDEV FILE] Path to UDEV rule file"
-    [USAGE_EX_PRE]="# Removing UDEV rule file"
-    [USAGE_EX]="__remove_udev_file \$UDEVN"
+declare -A REMOVE_UDEV_RULE_Usage=(
+    [Usage_TOOL]="__remove_udev_file"
+    [Usage_ARG1]="[UDEV FILE] Path to UDEV rule file"
+    [Usage_EX_PRE]="# Removing UDEV rule file"
+    [Usage_EX]="__remove_udev_file \$UDEVN"
 )
 
 #
@@ -71,7 +71,7 @@ function __remove_udev_file {
         info_debug_message_end "$MSG" "$FUNC" "$GEN_RULE_TOOL"
         return $NOT_SUCCESS
     fi
-    usage REMOVE_UDEV_RULE_USAGE
+    usage REMOVE_UDEV_RULE_Usage
     return $NOT_SUCCESS
 }
 
