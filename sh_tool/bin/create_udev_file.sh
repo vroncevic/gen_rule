@@ -7,11 +7,11 @@
 # @author  Vladimir Roncevic <vladimir.roncevic@frobas.com>
 #
 
-declare -A CREATE_UDEV_RULE_USAGE=(
-    [USAGE_TOOL]="__create_udev_file"
-    [USAGE_ARG1]="[UDEV Target name] Name of target board"
-    [USAGE_EX_PRE]="# Creating UDEV rule file"
-    [USAGE_EX]="__create_udev_file \$UDEVF"
+declare -A CREATE_UDEV_RULE_Usage=(
+    [Usage_TOOL]="__create_udev_file"
+    [Usage_ARG1]="[UDEV Target name] Name of target board"
+    [Usage_EX_PRE]="# Creating UDEV rule file"
+    [Usage_EX]="__create_udev_file \$UDEVF"
 )
 
 #
@@ -75,7 +75,7 @@ function __create_udev_file {
         info_debug_message_end "Done" "$FUNC" "$GEN_RULE_TOOL"
         return $SUCCESS
     fi
-    usage CREATE_UDEV_RULE_USAGE
+    usage CREATE_UDEV_RULE_Usage
     return $NOT_SUCCESS
 }
 

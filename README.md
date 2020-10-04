@@ -1,15 +1,16 @@
-# UDEV rules setup for interface boards.
+# UDEV rules setup for interface boards
 
 **gen_rule** is shell tool for generating rule access to user device.
 
-Developed in [bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) code: **100%**.
+Developed in **[bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))** code: **100%**.
+
+[![gen_rule shell checker](https://github.com/vroncevic/gen_rule/workflows/gen_rule%20shell%20checker/badge.svg)](https://github.com/vroncevic/gen_rule/actions?query=workflow%3A%22gen_rule+shell+checker%22)
 
 The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
 other information that should be provided before the tool is installed.
 
-[![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_rule.svg)](https://github.com/vroncevic/gen_rule/issues)
- [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_rule.svg)](https://github.com/vroncevic/gen_rule/graphs/contributors)
+[![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_rule.svg)](https://github.com/vroncevic/gen_rule/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_rule.svg)](https://github.com/vroncevic/gen_rule/graphs/contributors)
 
 <!-- START doctoc -->
 **Table of Contents**
@@ -22,9 +23,9 @@ other information that should be provided before the tool is installed.
 - [Copyright and Licence](#copyright-and-licence)
 <!-- END doctoc -->
 
-### INSTALLATION
+### Installation
 
-Navigate to release [page](https://github.com/vroncevic/gen_rule/releases) download and extract release archive.
+Navigate to release **[page](https://github.com/vroncevic/gen_rule/releases)** download and extract release archive.
 
 To install **gen_rule** type the following:
 
@@ -40,7 +41,9 @@ cp -R ~/sh_tool/log/   /root/scripts/gen_rule/ver.1.0/
 
 Or You can use docker to create image/container.
 
-### USAGE
+[![gen_rule docker checker](https://github.com/vroncevic/gen_rule/workflows/gen_rule%20docker%20checker/badge.svg)](https://github.com/vroncevic/gen_rule/actions?query=workflow%3A%22gen_rule+docker+checker%22)
+
+### Usage
 
 ```
 # Create symlink for shell tool
@@ -53,12 +56,12 @@ export PATH=${PATH}:/root/bin/
 gen_rule install avr_dragon
 ```
 
-### DEPENDENCIES
+### Dependencies
 
 **gen_rule** requires next modules and libraries:
 * sh_util [https://github.com/vroncevic/sh_util](https://github.com/vroncevic/sh_util)
 
-### SHELL TOOL STRUCTURE
+### Shell tool structure
 
 **gen_rule** is based on MOP.
 
@@ -87,21 +90,21 @@ Code structure:
     └── gen_rule.log
 ```
 
-### DOCS
+### Docs
 
 [![Documentation Status](https://readthedocs.org/projects/gen_rule/badge/?version=latest)](https://gen_rule.readthedocs.io/projects/gen_rule/en/latest/?badge=latest)
 
 More documentation and info at:
-* [https://apmodule.readthedocs.io/en/latest/](https://apmodule.readthedocs.io/en/latest/)
+* [https://gen_rule.readthedocs.io/en/latest/](https://gen_rule.readthedocs.io/en/latest/)
 * [https://www.gnu.org/software/bash/manual/](https://www.gnu.org/software/bash/manual/)
 
-### COPYRIGHT AND LICENCE
+### Copyright and licence
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Copyright (C) 2016 by [vroncevic.github.io/gen_rule](https://vroncevic.github.io/gen_rule)
 
-This tool is free software; you can redistribute it and/or modify
+**gen_rule** is free software; you can redistribute it and/or modify
 it under the same terms as Bash itself, either Bash version 4.2.47 or,
 at your option, any later version of Bash 4 you may have available.
 

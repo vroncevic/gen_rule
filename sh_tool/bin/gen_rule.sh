@@ -32,12 +32,12 @@ GEN_RULE_LOG=${GEN_RULE_HOME}/log
 .    ${GEN_RULE_HOME}/bin/create_udev_file.sh
 .    ${GEN_RULE_HOME}/bin/list_udev_files.sh
 
-declare -A GEN_RULE_USAGE=(
-    [USAGE_TOOL]="${GEN_RULE_TOOL}"
-    [USAGE_ARG1]="[OPERATION] install | uninstall | list"
-    [USAGE_ARG2]="[TARGET DEVICE] Target device board"
-    [USAGE_EX_PRE]="# Instaling UDEV rule for AVR Dragon board"
-    [USAGE_EX]="${GEN_RULE_TOOL} install avr_dragon"
+declare -A GEN_RULE_Usage=(
+    [Usage_TOOL]="${GEN_RULE_TOOL}"
+    [Usage_ARG1]="[OPERATION] install | uninstall | list"
+    [Usage_ARG2]="[TARGET DEVICE] Target device board"
+    [Usage_EX_PRE]="# Instaling UDEV rule for AVR Dragon board"
+    [Usage_EX]="${GEN_RULE_TOOL} install avr_dragon"
 )
 
 declare -A GEN_RULE_LOGGING=(
@@ -140,10 +140,10 @@ function __gen_rule {
             info_debug_message_end "Done" "$FUNC" "$GEN_RULE_TOOL"
             exit 0
         fi
-        usage GEN_RULE_USAGE
+        usage GEN_RULE_Usage
         exit 130
     fi
-    usage GEN_RULE_USAGE
+    usage GEN_RULE_Usage
     exit 128
 }
 
