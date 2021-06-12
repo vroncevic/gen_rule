@@ -1,3 +1,5 @@
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_rule/dev/docs/gen_rule_logo.png" width="25%">
+
 # UDEV rules setup for interface boards
 
 **gen_rule** is shell tool for generating rule access to user device.
@@ -32,11 +34,11 @@ Navigate to release **[page](https://github.com/vroncevic/gen_rule/releases)** d
 To install **gen_rule** type the following:
 
 ```
-tar xvzf gen_rule-x.y.z.tar.gz
-cd gen_rule-x.y.z
-cp -R ~/sh_tool/bin/   /root/scripts/gen_rule/ver.1.0/
-cp -R ~/sh_tool/conf/  /root/scripts/gen_rule/ver.1.0/
-cp -R ~/sh_tool/log/   /root/scripts/gen_rule/ver.1.0/
+tar xvzf gen_rule-x.y.tar.gz
+cd gen_rule-x.y
+cp -R ~/sh_tool/bin/   /root/scripts/gen_rule/ver.x.y/
+cp -R ~/sh_tool/conf/  /root/scripts/gen_rule/ver.x.y/
+cp -R ~/sh_tool/log/   /root/scripts/gen_rule/ver.x.y/
 ```
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_rule/dev/docs/setup_tree.png)
@@ -49,7 +51,7 @@ Or You can use docker to create image/container.
 
 ```
 # Create symlink for shell tool
-ln -s /root/scripts/gen_rule/ver.1.0/bin/gen_rule.sh /root/bin/gen_rule
+ln -s /root/scripts/gen_rule/ver.x.y/bin/gen_rule.sh /root/bin/gen_rule
 
 # Setting PATH
 export PATH=${PATH}:/root/bin/
@@ -69,7 +71,7 @@ gen_rule install avr_dragon
 
 Code structure:
 ```
-.
+sh_tool/
 ├── bin/
 │   ├── create_udev_file.sh
 │   ├── gen_rule.sh
