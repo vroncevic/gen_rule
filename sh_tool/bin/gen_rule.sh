@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # @brief   UDEV rules setup for interface boards
-# @version ver.1.0.0
+# @version ver.1.0
 # @date    Wed Nov 30 15:49:54 CET 2016
 # @company None, free sowtware to use 2016
 # @author  Vladimir Roncevic <vladimir.roncevic@frobas.com>
@@ -32,7 +32,7 @@ GEN_RULE_LOG=${GEN_RULE_HOME}/log
 .    ${GEN_RULE_HOME}/bin/create_udev_file.sh
 .    ${GEN_RULE_HOME}/bin/list_udev_files.sh
 
-declare -A GEN_RULE_Usage=(
+declare -A GEN_RULE_USAGE=(
     [Usage_TOOL]="${GEN_RULE_TOOL}"
     [Usage_ARG1]="[OPERATION] install | uninstall | list"
     [Usage_ARG2]="[TARGET DEVICE] Target device board"
@@ -140,10 +140,10 @@ function __gen_rule {
             info_debug_message_end "Done" "$FUNC" "$GEN_RULE_TOOL"
             exit 0
         fi
-        usage GEN_RULE_Usage
+        usage GEN_RULE_USAGE
         exit 130
     fi
-    usage GEN_RULE_Usage
+    usage GEN_RULE_USAGE
     exit 128
 }
 
