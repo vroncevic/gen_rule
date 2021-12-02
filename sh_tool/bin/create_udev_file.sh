@@ -1,17 +1,17 @@
 #!/bin/bash
 #
-# @brief   Creating UDEV rule file in system
-# @version ver.1.0
-# @date    Wed Nov 30 15:49:54 CET 2016
-# @company None, free sowtware to use 2016
-# @author  Vladimir Roncevic <vladimir.roncevic@frobas.com>
+# @brief   UDEV rule generator
+# @version ver.2.0
+# @date    Thu 02 Dec 2021 01:18:25 AM CET
+# @company None, free software to use 2021
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
-declare -A CREATE_UDEV_RULE_Usage=(
-    [Usage_TOOL]="__create_udev_file"
-    [Usage_ARG1]="[UDEV Target name] Name of target board"
-    [Usage_EX_PRE]="# Creating UDEV rule file"
-    [Usage_EX]="__create_udev_file \$UDEVF"
+declare -A CREATE_UDEV_RULE_USAGE=(
+    [USAGE_TOOL]="__create_udev_file"
+    [USAGE_ARG1]="[UDEV Target name] Name of target board"
+    [USAGE_EX_PRE]="# Creating UDEV rule file"
+    [USAGE_EX]="__create_udev_file \$UDEVF"
 )
 
 #
@@ -75,7 +75,7 @@ function __create_udev_file {
         info_debug_message_end "Done" "$FUNC" "$GEN_RULE_TOOL"
         return $SUCCESS
     fi
-    usage CREATE_UDEV_RULE_Usage
+    usage CREATE_UDEV_RULE_USAGE
     return $NOT_SUCCESS
 }
 

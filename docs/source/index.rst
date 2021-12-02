@@ -33,11 +33,16 @@ other information that should be provided before the tool is installed.
 Installation
 -------------
 
+|Debian Linux OS|
+
+.. |Debian Linux OS| image:: https://raw.githubusercontent.com/vroncevic/gen_rule/dev/docs/debtux.png
+   :target: https://www.debian.org
+
 Navigate to release `page`_ download and extract release archive.
 
 .. _page: https://github.com/vroncevic/gen_rule/releases
 
-To install **gen_rule** type the following:
+To install **gen_rule** type the following
 
 .. code-block:: bash
 
@@ -57,7 +62,7 @@ Or You can use Docker to create image/container.
 Dependencies
 -------------
 
-**gen_rule** requires next modules and libraries:
+**gen_rule** requires next modules and libraries
 
 * sh_util `https://github.com/vroncevic/sh_util <https://github.com/vroncevic/sh_util>`_
 
@@ -66,18 +71,21 @@ Shell tool structure
 
 **gen_rule** is based on MOP.
 
-Code structure:
+Shell tool structure
 
 .. code-block:: bash
 
    sh_tool/
    ├── bin/
+   │   ├── center.sh
    │   ├── create_udev_file.sh
+   │   ├── display_logo.sh
    │   ├── gen_rule.sh
    │   ├── list_udev_files.sh
    │   └── remove_udev_file.sh
    ├── conf/
    │   ├── gen_rule.cfg
+   │   ├── gen_rule.logo
    │   ├── gen_rule_util.cfg
    │   ├── template/
    │   │   ├── avr_dragon_isp.template

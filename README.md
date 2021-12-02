@@ -29,9 +29,11 @@ other information that should be provided before the tool is installed.
 
 ### Installation
 
+![Debian Linux OS](https://raw.githubusercontent.com/vroncevic/gen_rule/dev/docs/debtux.png)
+
 Navigate to release **[page](https://github.com/vroncevic/gen_rule/releases)** download and extract release archive.
 
-To install **gen_rule** type the following:
+To install **gen_rule** type the following
 
 ```
 tar xvzf gen_rule-x.y.tar.gz
@@ -41,7 +43,46 @@ cp -R ~/sh_tool/conf/  /root/scripts/gen_rule/ver.x.y/
 cp -R ~/sh_tool/log/   /root/scripts/gen_rule/ver.x.y/
 ```
 
-![alt tag](https://raw.githubusercontent.com/vroncevic/gen_rule/dev/docs/setup_tree.png)
+Self generated setup script and execution
+```
+./gen_rule_setup.sh
+
+[setup] installing App/Tool/Script gen_rule
+	Thu 02 Dec 2021 01:26:05 AM CET
+[setup] copy App/Tool/Script structure
+[setup] remove github editor configuration files
+[setup] set App/Tool/Script permission
+[setup] create symbolic link of App/Tool/Script
+[setup] done
+
+/root/scripts/gen_rule/ver.2.0/
+├── bin/
+│   ├── center.sh
+│   ├── create_udev_file.sh
+│   ├── display_logo.sh
+│   ├── gen_rule.sh
+│   ├── list_udev_files.sh
+│   └── remove_udev_file.sh
+├── conf/
+│   ├── gen_rule.cfg
+│   ├── gen_rule.logo
+│   ├── gen_rule_util.cfg
+│   ├── template/
+│   │   ├── avr_dragon_isp.template
+│   │   ├── avr_jtag_ice.template
+│   │   ├── avr_silabs.template
+│   │   ├── avr_usb_asp.template
+│   │   ├── avr_usb_mkii.template
+│   │   ├── avr_usb_tiny.template
+│   │   └── msp430uif.template
+│   ├── udev_rule_names.cfg
+│   └── udev_templates.cfg
+└── log/
+    └── gen_rule.log
+
+4 directories, 19 files
+lrwxrwxrwx 1 root root 46 Dec  2 01:26 /root/bin/gen_rule -> /root/scripts/gen_rule/ver.2.0/bin/gen_rule.sh
+```
 
 Or You can use docker to create image/container.
 
@@ -57,28 +98,57 @@ ln -s /root/scripts/gen_rule/ver.x.y/bin/gen_rule.sh /root/bin/gen_rule
 export PATH=${PATH}:/root/bin/
 
 # Generating user device rule
-gen_rule install avr_dragon
+gen_rule 
+
+gen_rule ver.2.0
+Thu 02 Dec 2021 01:41:27 AM CET
+
+[check_root] Check permission for current session? [ok]
+[check_root] Done
+
+	                                      
+	                               _      
+	  __ _  ___ _ __    _ __ _   _| | ___ 
+	 / _` |/ _ \ '_ \  | '__| | | | |/ _ \
+	| (_| |  __/ | | | | |  | |_| | |  __/
+	 \__, |\___|_| |_| |_|   \__,_|_|\___|
+	 |___/                                
+	                                      
+		Info   github.io/gen_rule ver.2.0 
+		Issue  github.io/issue
+		Author vroncevic.github.io
+
+  [USAGE] gen_rule [OPTIONS]
+  [OPTIONS]
+  [OPERATION] install | uninstall | list
+  [TARGET DEVICE] Target device board
+  # Instaling UDEV rule for AVR Dragon board
+  gen_rule install avr_dragon
+  [help | h] print this option
 ```
 
 ### Dependencies
 
-**gen_rule** requires next modules and libraries:
+**gen_rule** requires next modules and libraries
 * sh_util [https://github.com/vroncevic/sh_util](https://github.com/vroncevic/sh_util)
 
 ### Shell tool structure
 
 **gen_rule** is based on MOP.
 
-Code structure:
+Shell tool structure
 ```
 sh_tool/
 ├── bin/
+│   ├── center.sh
 │   ├── create_udev_file.sh
+│   ├── display_logo.sh
 │   ├── gen_rule.sh
 │   ├── list_udev_files.sh
 │   └── remove_udev_file.sh
 ├── conf/
 │   ├── gen_rule.cfg
+│   ├── gen_rule.logo
 │   ├── gen_rule_util.cfg
 │   ├── template/
 │   │   ├── avr_dragon_isp.template
@@ -98,9 +168,10 @@ sh_tool/
 
 [![Documentation Status](https://readthedocs.org/projects/gen_rule/badge/?version=latest)](https://gen_rule.readthedocs.io/projects/gen_rule/en/latest/?badge=latest)
 
-More documentation and info at:
-* [https://gen_rule.readthedocs.io/en/latest/](https://gen_rule.readthedocs.io/en/latest/)
-* [https://www.gnu.org/software/bash/manual/](https://www.gnu.org/software/bash/manual/)
+More documentation and info at
+* [gen_rule.readthedocs.io](https://gen_rule.readthedocs.io/en/latest/)
+* [www.gnu.org/software/bash/manual/](https://www.gnu.org/software/bash/manual/)
+* [wiki.debian.org/udev](https://wiki.debian.org/udev)
 
 ### Copyright and licence
 
