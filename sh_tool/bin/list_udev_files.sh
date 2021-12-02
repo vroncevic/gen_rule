@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# @brief   List UDEV rule file templates
-# @version ver.1.0
-# @date    Wed Nov 30 15:49:54 CET 2016
-# @company None, free sowtware to use 2016
-# @author  Vladimir Roncevic <vladimir.roncevic@frobas.com>
+# @brief   UDEV rule generator
+# @version ver.2.0
+# @date    Thu 02 Dec 2021 01:18:25 AM CET
+# @company None, free software to use 2021
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
 #

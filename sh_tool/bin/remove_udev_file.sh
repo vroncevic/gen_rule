@@ -1,17 +1,17 @@
 #!/bin/bash
 #
-# @brief   Removing UDEV rule file from system
-# @version ver.1.0
-# @date    Wed Nov 30 15:49:54 CET 2016
-# @company None, free sowtware to use 2016
-# @author  Vladimir Roncevic <vladimir.roncevic@frobas.com>
+# @brief   UDEV rule generator
+# @version ver.2.0
+# @date    Thu 02 Dec 2021 01:18:25 AM CET
+# @company None, free software to use 2021
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 
-declare -A REMOVE_UDEV_RULE_Usage=(
-    [Usage_TOOL]="__remove_udev_file"
-    [Usage_ARG1]="[UDEV FILE] Path to UDEV rule file"
-    [Usage_EX_PRE]="# Removing UDEV rule file"
-    [Usage_EX]="__remove_udev_file \$UDEVN"
+declare -A REMOVE_UDEV_RULE_USAGE=(
+    [USAGE_TOOL]="__remove_udev_file"
+    [USAGE_ARG1]="[UDEV FILE] Path to UDEV rule file"
+    [USAGE_EX_PRE]="# Removing UDEV rule file"
+    [USAGE_EX]="__remove_udev_file \$UDEVN"
 )
 
 #
@@ -71,7 +71,7 @@ function __remove_udev_file {
         info_debug_message_end "$MSG" "$FUNC" "$GEN_RULE_TOOL"
         return $NOT_SUCCESS
     fi
-    usage REMOVE_UDEV_RULE_Usage
+    usage REMOVE_UDEV_RULE_USAGE
     return $NOT_SUCCESS
 }
 

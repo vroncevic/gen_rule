@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# @brief   UDEV rules setup for interface boards
-# @version ver.1.0
-# @date    Wed Nov 30 15:49:54 CET 2016
-# @company None, free sowtware to use 2016
-# @author  Vladimir Roncevic <vladimir.roncevic@frobas.com>
+# @brief   UDEV rule generator
+# @version ver.2.0
+# @date    Thu 02 Dec 2021 01:18:25 AM CET
+# @company None, free software to use 2021
+# @author  Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 UTIL_ROOT=/root/scripts
 UTIL_VERSION=ver.1.0
@@ -22,22 +22,28 @@ UTIL_LOG=${UTIL}/log
 .    ${UTIL}/bin/progress_bar.sh
 
 GEN_RULE_TOOL=gen_rule
-GEN_RULE_VERSION=ver.1.0
+GEN_RULE_VERSION=ver.2.0
 GEN_RULE_HOME=${UTIL_ROOT}/${GEN_RULE_TOOL}/${GEN_RULE_VERSION}
 GEN_RULE_CFG=${GEN_RULE_HOME}/conf/${GEN_RULE_TOOL}.cfg
 GEN_RULE_UTIL_CFG=${GEN_RULE_HOME}/conf/${GEN_RULE_TOOL}_util.cfg
+GEN_RULE_LOGO=${GEN_RULE_HOME}/conf/${GEN_RULE_TOOL}.logo
 GEN_RULE_LOG=${GEN_RULE_HOME}/log
 
+tabs 4
+CONSOLE_WIDTH=$(stty size | awk '{print $2}')
+
+.    ${GEN_RULE_HOME}/bin/center.sh
+.    ${GEN_RULE_HOME}/bin/display_logo.sh
 .    ${GEN_RULE_HOME}/bin/remove_udev_file.sh
 .    ${GEN_RULE_HOME}/bin/create_udev_file.sh
 .    ${GEN_RULE_HOME}/bin/list_udev_files.sh
 
 declare -A GEN_RULE_USAGE=(
-    [Usage_TOOL]="${GEN_RULE_TOOL}"
-    [Usage_ARG1]="[OPERATION] install | uninstall | list"
-    [Usage_ARG2]="[TARGET DEVICE] Target device board"
-    [Usage_EX_PRE]="# Instaling UDEV rule for AVR Dragon board"
-    [Usage_EX]="${GEN_RULE_TOOL} install avr_dragon"
+    [USAGE_TOOL]="${GEN_RULE_TOOL}"
+    [USAGE_ARG1]="[OPERATION] install | uninstall | list"
+    [USAGE_ARG2]="[TARGET DEVICE] Target device board"
+    [USAGE_EX_PRE]="# Instaling UDEV rule for AVR Dragon board"
+    [USAGE_EX]="${GEN_RULE_TOOL} install avr_dragon"
 )
 
 declare -A GEN_RULE_LOGGING=(
@@ -76,6 +82,7 @@ TOOL_NOTIFY="false"
 #
 function __gen_rule {
     local OP=$1 TD=$2
+    display_logo
     if [[ -n "${OP}" && -n "${TD}" ]]; then
         local FUNC=${FUNCNAME[0]} MSG="None"
         local STATUS_CONF STATUS_CONF_UTIL STATUS
@@ -168,4 +175,3 @@ if [ $STATUS -eq $SUCCESS ]; then
 fi
 
 exit 127
-
