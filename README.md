@@ -6,7 +6,7 @@
 
 Developed in **[bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))** code: **100%**.
 
-[![gen_rule shell checker](https://github.com/vroncevic/gen_rule/workflows/gen_rule%20shell%20checker/badge.svg)](https://github.com/vroncevic/gen_rule/actions?query=workflow%3A%22gen_rule+shell+checker%22)
+[![gen_rule_shell_checker](https://github.com/vroncevic/gen_rule/actions/workflows/gen_rule_shell_checker.yml/badge.svg)](https://github.com/vroncevic/gen_rule/actions/workflows/gen_rule_shell_checker.yml)
 
 The README is used to introduce the tool and provide instructions on
 how to install the tool, any machine dependencies it may have and any
@@ -86,8 +86,6 @@ lrwxrwxrwx 1 root root 46 Dec  2 01:26 /root/bin/gen_rule -> /root/scripts/gen_r
 
 Or You can use docker to create image/container.
 
-[![gen_rule docker checker](https://github.com/vroncevic/gen_rule/workflows/gen_rule%20docker%20checker/badge.svg)](https://github.com/vroncevic/gen_rule/actions?query=workflow%3A%22gen_rule+docker+checker%22)
-
 ### Usage
 
 ```
@@ -106,13 +104,16 @@ Thu 02 Dec 2021 01:41:27 AM CET
 [check_root] Check permission for current session? [ok]
 [check_root] Done
 
-	                                      
-	                               _      
-	  __ _  ___ _ __    _ __ _   _| | ___ 
-	 / _` |/ _ \ '_ \  | '__| | | | |/ _ \
-	| (_| |  __/ | | | | |  | |_| | |  __/
-	 \__, |\___|_| |_| |_|   \__,_|_|\___|
-	 |___/                                
+                                                              
+                                                  ██          
+                                                 ░██          
+    █████   █████  ███████        ██████ ██   ██ ░██  █████   
+   ██░░░██ ██░░░██░░██░░░██      ░░██░░█░██  ░██ ░██ ██░░░██  
+  ░██  ░██░███████ ░██  ░██       ░██ ░ ░██  ░██ ░██░███████  
+  ░░██████░██░░░░  ░██  ░██       ░██   ░██  ░██ ░██░██░░░░   
+   ░░░░░██░░██████ ███  ░██ █████░███   ░░██████ ███░░██████  
+    █████  ░░░░░░ ░░░   ░░ ░░░░░ ░░░     ░░░░░░ ░░░  ░░░░░░   
+   ░░░░░                                                       
 	                                      
 		Info   github.io/gen_rule ver.2.0 
 		Issue  github.io/issue
@@ -166,10 +167,10 @@ sh_tool/
 
 ### Docs
 
-[![Documentation Status](https://readthedocs.org/projects/gen_rule/badge/?version=latest)](https://gen_rule.readthedocs.io/projects/gen_rule/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/gen_rule/badge/?version=latest)](https://gen-rule.readthedocs.io/projects/gen_rule/en/latest/?badge=latest)
 
 More documentation and info at
-* [gen_rule.readthedocs.io](https://gen_rule.readthedocs.io/en/latest/)
+* [gen_rule.readthedocs.io](https://gen-rule.readthedocs.io/en/latest/)
 * [www.gnu.org/software/bash/manual/](https://www.gnu.org/software/bash/manual/)
 * [wiki.debian.org/udev](https://wiki.debian.org/udev)
 
@@ -177,7 +178,7 @@ More documentation and info at
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2016 by [vroncevic.github.io/gen_rule](https://vroncevic.github.io/gen_rule)
+Copyright (C) 2016 - 2024 by [vroncevic.github.io/gen_rule](https://vroncevic.github.io/gen_rule)
 
 **gen_rule** is free software; you can redistribute it and/or modify
 it under the same terms as Bash itself, either Bash version 4.2.47 or,
