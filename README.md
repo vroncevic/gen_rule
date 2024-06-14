@@ -1,6 +1,6 @@
-<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_rule/dev/docs/gen_rule_logo.png" width="25%">
-
 # UDEV rules setup for interface boards
+
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_rule/dev/docs/gen_rule_logo.png" width="25%">
 
 **gen_rule** is shell tool for generating rule access to user device.
 
@@ -35,7 +35,7 @@ Navigate to release **[page](https://github.com/vroncevic/gen_rule/releases)** d
 
 To install **gen_rule** type the following
 
-```
+```bash
 tar xvzf gen_rule-x.y.tar.gz
 cd gen_rule-x.y
 cp -R ~/sh_tool/bin/   /root/scripts/gen_rule/ver.x.y/
@@ -44,7 +44,8 @@ cp -R ~/sh_tool/log/   /root/scripts/gen_rule/ver.x.y/
 ```
 
 Self generated setup script and execution
-```
+
+```bash
 ./gen_rule_setup.sh
 
 [setup] installing App/Tool/Script gen_rule
@@ -88,7 +89,7 @@ Or You can use docker to create image/container.
 
 ### Usage
 
-```
+```bash
 # Create symlink for shell tool
 ln -s /root/scripts/gen_rule/ver.x.y/bin/gen_rule.sh /root/bin/gen_rule
 
@@ -138,7 +139,8 @@ Thu 02 Dec 2021 01:41:27 AM CET
 **gen_rule** is based on MOP.
 
 Shell tool structure
-```
+
+```bash
 sh_tool/
 ├── bin/
 │   ├── center.sh
