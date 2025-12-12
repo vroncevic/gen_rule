@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # @brief   UDEV rule generator
-# @version ver.2.0
+# @version ver.4.0
 # @date    Thu 02 Dec 2021 01:18:25 AM CET
 # @company None, free software to use 2021
 # @author  Vladimir Roncevic <elektron.ronca@gmail.com>
@@ -11,8 +11,6 @@ UTIL_VERSION=ver.1.0
 UTIL=${UTIL_ROOT}/sh_util/${UTIL_VERSION}
 UTIL_LOG=${UTIL}/log
 
-.    ${UTIL}/bin/devel.sh
-.    ${UTIL}/bin/usage.sh
 .    ${UTIL}/bin/check_root.sh
 .    ${UTIL}/bin/check_tool.sh
 .    ${UTIL}/bin/check_op.sh
@@ -20,20 +18,16 @@ UTIL_LOG=${UTIL}/log
 .    ${UTIL}/bin/load_conf.sh
 .    ${UTIL}/bin/load_util_conf.sh
 .    ${UTIL}/bin/progress_bar.sh
+.    ${UTIL}/bin/display_logo.sh
 
 GEN_RULE_TOOL=gen_rule
-GEN_RULE_VERSION=ver.2.0
+GEN_RULE_VERSION=ver.4.0
 GEN_RULE_HOME=${UTIL_ROOT}/${GEN_RULE_TOOL}/${GEN_RULE_VERSION}
 GEN_RULE_CFG=${GEN_RULE_HOME}/conf/${GEN_RULE_TOOL}.cfg
 GEN_RULE_UTIL_CFG=${GEN_RULE_HOME}/conf/${GEN_RULE_TOOL}_util.cfg
 GEN_RULE_LOGO=${GEN_RULE_HOME}/conf/${GEN_RULE_TOOL}.logo
 GEN_RULE_LOG=${GEN_RULE_HOME}/log
 
-tabs 4
-CONSOLE_WIDTH=$(stty size | awk '{print $2}')
-
-.    ${GEN_RULE_HOME}/bin/center.sh
-.    ${GEN_RULE_HOME}/bin/display_logo.sh
 .    ${GEN_RULE_HOME}/bin/remove_udev_file.sh
 .    ${GEN_RULE_HOME}/bin/create_udev_file.sh
 .    ${GEN_RULE_HOME}/bin/list_udev_files.sh
@@ -59,6 +53,13 @@ declare -A PB_STRUCTURE=(
     [SLEEP]=0.01
 )
 
+declare -A GEN_RULE_LOGO_DATA=(
+    [OWNER]="vroncevic"
+    [REPO]="${GEN_RULE_TOOL}"
+    [VERSION]="${GEN_RULE_VERSION}"
+    [LOGO]="${GEN_RULE_LOGO}"
+)
+
 TOOL_DBG="false"
 TOOL_LOG="false"
 TOOL_NOTIFY="false"
@@ -82,76 +83,86 @@ TOOL_NOTIFY="false"
 #
 function __gen_rule {
     local OP=$1 TD=$2
-    display_logo
-    if [[ -n "${OP}" && -n "${TD}" ]]; then
-        local FUNC=${FUNCNAME[0]} MSG="None"
-        local STATUS_CONF STATUS_CONF_UTIL STATUS
-        MSG="Loading basic and util configuration!"
-        info_debug_message "$MSG" "$FUNC" "$GEN_RULE_TOOL"
-        progress_bar PB_STRUCTURE
-        declare -A config_gen_rule=()
-        load_conf "$GEN_RULE_CFG" config_gen_rule
-        STATUS_CONF=$?
-        declare -A config_gen_rule_util=()
-        load_util_conf "$GEN_RULE_UTIL_CFG" config_gen_rule_util
-        STATUS_CONF_UTIL=$?
-        declare -A STATUS_STRUCTURE=([1]=$STATUS_CONF [2]=$STATUS_CONF_UTIL)
-        check_status STATUS_STRUCTURE
+    if [[ -z "${OP}" ]]; then
+        usage GEN_RULE_USAGE
+        exit 128
+    fi
+    display_logo GEN_RULE_LOGO_DATA
+    local FUNC=${FUNCNAME[0]} MSG="None"
+    local STATUS_CONF STATUS_CONF_UTIL STATUS
+    MSG="Loading basic and util configuration!"
+    info_debug_message "$MSG" "$FUNC" "$GEN_RULE_TOOL"
+    progress_bar PB_STRUCTURE
+    declare -A config_gen_rule=()
+    load_conf "$GEN_RULE_CFG" config_gen_rule
+    STATUS_CONF=$?
+    declare -A config_gen_rule_util=()
+    load_util_conf "$GEN_RULE_UTIL_CFG" config_gen_rule_util
+    STATUS_CONF_UTIL=$?
+    declare -A STATUS_STRUCTURE=([1]=$STATUS_CONF [2]=$STATUS_CONF_UTIL)
+    check_status STATUS_STRUCTURE
+    STATUS=$?
+    if [ $STATUS -eq $NOT_SUCCESS ]; then
+        MSG="Force exit!"
+        info_debug_message_end "$MSG" "$FUNC" "$GEN_RULE_TOOL"
+        exit 129
+    fi
+    TOOL_DBG=${config_gen_rule[DEBUGGING]}
+    TOOL_LOG=${config_gen_rule[LOGGING]}
+    TOOL_NOTIFY=${config_gen_rule[EMAILING]}
+    local OPERATIONS=${config_gen_rule_util[UDEV_OPERATIONS]}
+    IFS=' ' read -ra OPS <<< "${OPERATIONS}"
+    check_op "${OP}" "${OPS[*]}"
+    STATUS=$?
+    if [ $STATUS -eq $NOT_SUCCESS ]; then
+        usage GEN_RULE_USAGE
+        exit 130
+    fi
+    if [ "${OP}" == "install" ]; then
+        declare -A udev_setup=(
+            [UDEV_TOOL]="${config_gen_rule_util[UDEV]}"
+            [TARGET_DEVICE]="${TD}"
+            [CFG_TEMPLATES]="${GEN_RULE_HOME}/conf/${config_gen_rule_util[UDEVT]}"
+            [UDEV_FILE]="${config_gen_rule_util[UDEVD]}/${TD}.rules"
+        )
+        __create_udev_file udev_setup
         STATUS=$?
         if [ $STATUS -eq $NOT_SUCCESS ]; then
             MSG="Force exit!"
             info_debug_message_end "$MSG" "$FUNC" "$GEN_RULE_TOOL"
-            exit 129
+            exit 131
         fi
-        TOOL_DBG=${config_gen_rule[DEBUGGING]}
-        TOOL_LOG=${config_gen_rule[LOGGING]}
-        TOOL_NOTIFY=${config_gen_rule[EMAILING]}
-        local OPERATIONS=${config_gen_rule_util[UDEV_OPERATIONS]}
-        IFS=' ' read -ra OPS <<< "${OPERATIONS}"
-        check_op "${OP}" "${OPS[*]}"
+        MSG="Instaling udev rule for ${TD}"
+        GEN_RULE_LOGGING[LOG_FLAG]="info"
+        GEN_RULE_LOGGING[LOG_MSGE]=$MSG
+        logging GEN_RULE_LOGGING
+    elif [ "${OP}" == "uninstall" ]; then
+        __remove_udev_file "${config_gen_rule_util[UDEVD]}/${TD}.rules"
         STATUS=$?
-        if [ $STATUS -eq $SUCCESS ]; then
-            if [ "${OP}" == "install" ]; then
-                __create_udev_file ${TD}
-                STATUS=$?
-                if [ $STATUS -eq $NOT_SUCCESS ]; then
-                    MSG="Force exit!"
-                    info_debug_message_end "$MSG" "$FUNC" "$GEN_RULE_TOOL"
-                    exit 131
-                fi
-                MSG="Instaling udev rule for ${TD}"
-                GEN_RULE_LOGGING[LOG_FLAG]="info"
-                GEN_RULE_LOGGING[LOG_MSGE]=$MSG
-                logging GEN_RULE_LOGGING
-            elif [ "${OP}" == "uninstall" ]; then
-                __remove_udev_file ${TD}
-                STATUS=$?
-                if [ $STATUS -eq $NOT_SUCCESS ]; then
-                    MSG="Force exit!"
-                    info_debug_message_end "$MSG" "$FUNC" "$GEN_RULE_TOOL"
-                    exit 132
-                fi
-                MSG="Uninstall udev rule for ${TD}"
-                GEN_RULE_LOGGING[LOG_FLAG]="info"
-                GEN_RULE_LOGGING[LOG_MSGE]=$MSG
-                logging GEN_RULE_LOGGING
-            elif [ "${OP}" == "list" ]; then
-                __list_udev_files
-                STATUS=$?
-                if [ $STATUS -eq $NOT_SUCCESS ]; then
-                    MSG="Force exit!"
-                    info_debug_message_end "$MSG" "$FUNC" "$GEN_RULE_TOOL"
-                    exit 133
-                fi
-            fi
-            info_debug_message_end "Done" "$FUNC" "$GEN_RULE_TOOL"
-            exit 0
+        if [ $STATUS -eq $NOT_SUCCESS ]; then
+            MSG="Force exit!"
+            info_debug_message_end "$MSG" "$FUNC" "$GEN_RULE_TOOL"
+            exit 132
         fi
-        usage GEN_RULE_USAGE
-        exit 130
+        MSG="Uninstall udev rule for ${TD}"
+        GEN_RULE_LOGGING[LOG_FLAG]="info"
+        GEN_RULE_LOGGING[LOG_MSGE]=$MSG
+        logging GEN_RULE_LOGGING
+    elif [ "${OP}" == "list" ]; then
+        declare -A list_setup=(
+            [RULE_DIR]="${config_gen_rule_util[UDEVD]}"
+            [RULE_CFG]="${GEN_RULE_HOME}/conf/${config_gen_rule_util[UDEVN]}"
+        )
+        __list_udev_files list_setup
+        STATUS=$?
+        if [ $STATUS -eq $NOT_SUCCESS ]; then
+            MSG="Force exit!"
+            info_debug_message_end "$MSG" "$FUNC" "$GEN_RULE_TOOL"
+            exit 133
+        fi
     fi
-    usage GEN_RULE_USAGE
-    exit 128
+    info_debug_message_end "Done" "$FUNC" "$GEN_RULE_TOOL"
+    exit 0
 }
 
 #

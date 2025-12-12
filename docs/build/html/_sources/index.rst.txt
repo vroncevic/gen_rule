@@ -46,11 +46,11 @@ To install **gen_rule** type the following
 
 .. code-block:: bash
 
-   tar xvzf gen_rule-x.y.tar.gz
-   cd gen_rule-x.y
-   cp -R ~/sh_tool/bin/   /root/scripts/gen_rule/ver.x.y/
-   cp -R ~/sh_tool/conf/  /root/scripts/gen_rule/ver.x.y/
-   cp -R ~/sh_tool/log/   /root/scripts/gen_rule/ver.x.y/
+   tar xvzf gen_rule-4.0.tar.gz
+   cd gen_rule-4.0
+   cp -R ~/sh_tool/bin/   /root/scripts/gen_rule/ver.4.0/
+   cp -R ~/sh_tool/conf/  /root/scripts/gen_rule/ver.4.0/
+   cp -R ~/sh_tool/log/   /root/scripts/gen_rule/ver.4.0/
 
 Or You can use Docker to create image/container.
 
@@ -72,9 +72,7 @@ Shell tool structure
 
    sh_tool/
    ├── bin/
-   │   ├── center.sh
    │   ├── create_udev_file.sh
-   │   ├── display_logo.sh
    │   ├── gen_rule.sh
    │   ├── list_udev_files.sh
    │   └── remove_udev_file.sh
@@ -101,12 +99,12 @@ Copyright and licence
 |License: GPL v3| |License: Apache 2.0|
 
 .. |License: GPL v3| image:: https://img.shields.io/badge/License-GPLv3-blue.svg
-   :target: https://www.gnu.org/licenses/gpl-3.0
+   :target: https://www.gnu.org/licenses/gpl-4.0
 
 .. |License: Apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
 
-Copyright (C) 2016 - 2024 by `vroncevic.github.io/gen_rule <https://vroncevic.github.io/gen_rule>`_
+Copyright (C) 2016 - 2026 by `vroncevic.github.io/gen_rule <https://vroncevic.github.io/gen_rule>`_
 
 **gen_rule** is free software; you can redistribute it and/or modify it
 under the same terms as Bash itself, either Bash version 4.2.47 or,
